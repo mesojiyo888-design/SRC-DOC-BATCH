@@ -21,7 +21,7 @@ mybatis:
   configuration:
     map-underscore-to-camel-case: true  # snake_case → camelCase 자동 변환
     jdbc-type-for-null: VARCHAR # null 값이 들어오면 무조건 VARCHAR로 간주하라는 설정
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    #log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 decorator:
   datasource:
