@@ -1,0 +1,29 @@
+spring:
+  batch:
+    job:
+      enabled: true
+    initialize-schema: never # DB schema 생성옵션 - always : 자동생성, never : 생성안함, embedded : 내장DB만 자동생성
+    # 메타데이터 트랜잭션 격리 수준을 낮춥니다 (READ_COMMITTED가 오라클 기본값)
+    repository:
+      isolation-level-for-create: ISOLATION_READ_COMMITTED
+
+  datasource:
+    driver-class-name: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@172.16.151.121:1521/ORCL
+    username: c##user0001
+    password: aD123456789
+
+  main:
+    web-application-type: none  # 내장 톰캣 안 띄움
+
+mybatis:
+  mapper-locations: classpath:mapper/**/*.xml
+  configuration:
+    map-underscore-to-camel-case: true  # snake_case → camelCase 자동 변환
+    jdbc-type-for-null: VARCHAR # null 값이 들어오면 무조건 VARCHAR로 간주하라는 설정
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+decorator:
+  datasource:
+    p6spy:
+      enable-logging: true
